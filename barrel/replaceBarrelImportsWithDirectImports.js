@@ -27,7 +27,6 @@ let replaceBarrelImportsWithDirectImports = ({ barrelImportPath, fileText, impor
 			fileText = newImportStatementList.map((x) => x.trim() + "\n").join("") + fileText;
 		}
 	}
-	logger.debug("HERE");
 	return fileText;
 };
 
