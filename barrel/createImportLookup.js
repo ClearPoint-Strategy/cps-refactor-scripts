@@ -6,12 +6,12 @@ import getPathFromStatement from "../utils/getPathFromStatement";
 import { resolve } from "path";
 import logger from "../logger";
 
-let createImportLookup = ({ barrelFilePath }) => {
+let createImportLookup = ({ barrelFilePath, barrelImportPath }) => {
 	logger.debug(resolve(barrelFilePath));
 	let fileText = readFileSync(resolve(barrelFilePath), { encoding: "utf-8" });
 	let statementList = getImportStatementList(fileText);
 	let lookup = {};
-	let directory = barrelFilePath.match(/.+\//)[0];
+	let directory = barrelImportPath.match(/.+\//)[0];
 	for (let statement of statementList) {
 		let { defaultImport, namedImportList } = getImportsFromStatement(statement);
 		let path = getPathFromStatement(statement).replace(/^\.\//g, directory);

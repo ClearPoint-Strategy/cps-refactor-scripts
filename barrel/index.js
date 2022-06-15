@@ -13,7 +13,7 @@ let refactorBarrelImports = (skipWriteFlag) => {
 	let { barrelFilePath, barrelImportPath, targetPath, extensionList } = args;
 	logger.info("--- RUNNING REFACTOR BARREL FILE IMPORTS SCRIPT ---");
 	logger.debug({ barrelFilePath, barrelImportPath, targetPath, extensionList });
-	let importLookup = createImportLookup({ barrelFilePath });
+	let importLookup = createImportLookup({ barrelFilePath, barrelImportPath });
 	let refactorFile = ({ filePath }) => {
 		logger.debug("--- REFACTORING FILE ---");
 		logger.debug(filePath);
