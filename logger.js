@@ -1,6 +1,6 @@
 import winston from "winston";
 let { format } = winston;
-let { colorize, combine, json, printf, simple, splat } = format;
+let { colorize, combine, printf, simple } = format;
 
 let jsonLog = (log) => {
 	if (typeof log.message === "object") log.message = JSON.stringify(log.message, 0, 3);

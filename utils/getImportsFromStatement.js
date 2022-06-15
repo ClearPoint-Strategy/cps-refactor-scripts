@@ -1,4 +1,6 @@
+import removeComments from "./removeComments";
 let getImportsFromStatement = (statement) => {
+	statement = removeComments(statement);
 	let importMatch = statement.match(/import ([\s\S]+?) from/);
 	if (!importMatch) return {};
 	let importString = importMatch[1];

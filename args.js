@@ -20,6 +20,11 @@ let args = yargs(hideBin(process.argv))
 		description: "Number of files to use for debugging",
 		type: "number",
 	})
+	.option("file-match", {
+		alias: "m",
+		description: "File name matcher",
+		type: "number",
+	})
 	.option("target-path", {
 		alias: "p",
 		demandOption: true,

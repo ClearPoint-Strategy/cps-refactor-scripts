@@ -15,7 +15,7 @@ let sortImports = (skipWriteFlag) => {
 	};
 	let n = iterateOverFiles({ callback: refactorFile, path: targetPath, extensionList });
 	logger.info(`Count: ${n} files.`);
-	logger.info("--- REFACTOR BARREL FILE IMPORTS SCRIPT COMPLETED ---");
+	logger.info("--- SORT IMPORTS SCRIPT COMPLETED ---");
 };
 
 export default sortImports;

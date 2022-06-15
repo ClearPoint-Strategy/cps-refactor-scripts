@@ -5,12 +5,14 @@ import getDirectories from "./getDirectories";
 
 let n = 0;
 let iterateOverFilesOfType = ({ callback, path, extensionList }) => {
-	let { debugFileCount } = args;
+	let { debugFileCount, fileMatch } = args;
 	let filePathList = readdirSync(path);
 	filePathList = filePathList.filter((x) => extensionList.includes(extname(x)));
 	for (let filePath of filePathList) {
 		let fullFilePath = join(path, filePath);
-		if (!debugFileCount || n < debugFileCount) {
+		let fileMatchFlag = !fileMatch || new RegExp(fileMatch).test(filePath);
+		let countFlag = !debugFileCount || n < debugFileCount;
+		if (fileMatchFlag && countFlag) {
 			callback({ filePath: fullFilePath });
 			n++;
 		}

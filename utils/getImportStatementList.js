@@ -1,6 +1,7 @@
 import logger from "../logger";
 
 let getImportStatementList = (fileText) => {
+	fileText = removeComments(fileText);
 	let firstStatement = fileText.match(/^import .+?";/);
 	let statementList = fileText.match(/(?<=\n)import [\s\S]+?";/g);
 	logger.debug("--- IMPORT STATEMENT LIST ---");
