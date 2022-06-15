@@ -5,15 +5,20 @@ import logger from "../logger";
 import getDirectories from "./getDirectories";
 
 let n = 0;
+let loggedFlag = false;
 let iterateOverFilesOfType = ({ callback, path, extensionList }) => {
 	let { debugFileCount, fileMatch } = args;
+	if (!loggedFlag) {
+		if (debugFileCount) logger.debug(`Logging first ${debugFileCount} files.`);
+		if (fileMatch) logger.debug(`Logging files that match text: ${debugFileCount}.`);
+		loggedFlag = true;
+	}
 	let filePathList = readdirSync(path);
 	filePathList = filePathList.filter((x) => extensionList.includes(extname(x)));
 	for (let filePath of filePathList) {
 		let fullFilePath = join(path, filePath);
 		let fileMatchFlag = !fileMatch || new RegExp(fileMatch).test(filePath);
 		let countFlag = !debugFileCount || n < debugFileCount;
-		logger.debug(fileMatch, fileMatchFlag);
 		if (fileMatchFlag && countFlag) {
 			callback({ filePath: fullFilePath });
 			n++;
