@@ -1,4 +1,5 @@
 import logger from "../logger";
+import removeComments from "./removeComments";
 
 let getImportStatementList = (fileText) => {
 	fileText = removeComments(fileText);
