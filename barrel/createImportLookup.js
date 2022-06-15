@@ -15,6 +15,7 @@ let createImportLookup = ({ barrelFilePath, barrelImportPath }) => {
 	for (let statement of statementList) {
 		let { defaultImport, namedImportList } = getImportsFromStatement(statement);
 		let path = getPathFromStatement(statement).replace(/^\.\//g, directory);
+		if (path.startsWith(".")) throw new Error("All imports must be absolute. Please update path: " + path);
 		if (defaultImport) {
 			lookup[defaultImport] = {
 				path,
