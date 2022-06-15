@@ -15,9 +15,9 @@ let args = yargs(hideBin(process.argv))
 		type: "boolean",
 		default: false,
 	})
-	.option("debug-file-count", {
+	.option("file-count", {
 		alias: "c",
-		description: "Number of files to use for debugging",
+		description: "Number of files to change.",
 		type: "number",
 	})
 	.option("file-match", {

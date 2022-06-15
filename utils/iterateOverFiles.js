@@ -7,10 +7,10 @@ import getDirectories from "./getDirectories";
 let n = 0;
 let loggedFlag = false;
 let iterateOverFilesOfType = ({ callback, path, extensionList }) => {
-	let { debugFileCount, fileMatch } = args;
+	let { fileCount, fileMatch } = args;
 	if (!loggedFlag) {
-		if (debugFileCount) logger.debug(`Logging first ${debugFileCount} files.`);
-		if (fileMatch) logger.debug(`Logging files that match text: ${fileMatch}.`);
+		if (fileCount) logger.info(`Running on first ${fileCount} files.`);
+		if (fileMatch) logger.info(`Running on files that match text: ${fileMatch}.`);
 		loggedFlag = true;
 	}
 	let filePathList = readdirSync(path);
@@ -18,7 +18,7 @@ let iterateOverFilesOfType = ({ callback, path, extensionList }) => {
 	for (let filePath of filePathList) {
 		let fullFilePath = join(path, filePath);
 		let fileMatchFlag = !fileMatch || new RegExp(fileMatch).test(filePath);
-		let countFlag = !debugFileCount || n < debugFileCount;
+		let countFlag = !fileCount || n < fileCount;
 		if (fileMatchFlag && countFlag) {
 			callback({ filePath: fullFilePath });
 			n++;
