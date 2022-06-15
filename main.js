@@ -9,7 +9,6 @@ import { setConsoleTransportLevel } from "./logger";
 		sort,
 	};
 	let { debugFlag, script } = args;
-	console.log(script);
 	if (debugFlag) setConsoleTransportLevel("debug");
 	await scriptLookup[script](debugFlag);
 })();
