@@ -17,7 +17,7 @@ let iterateOverFilesOfType = ({ callback, path, extensionList }) => {
 	filePathList = filePathList.filter((x) => extensionList.includes(extname(x)));
 	for (let filePath of filePathList) {
 		let fullFilePath = join(path, filePath);
-		let fileMatchFlag = !fileMatch || new RegExp(fileMatch).test(filePath);
+		let fileMatchFlag = !fileMatch || new RegExp(fileMatch).test(fullFilePath);
 		let countFlag = !fileCount || n < fileCount;
 		if (fileMatchFlag && countFlag) {
 			callback({ filePath: fullFilePath });
