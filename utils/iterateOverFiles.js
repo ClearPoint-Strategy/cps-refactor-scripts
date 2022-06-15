@@ -1,6 +1,7 @@
 import { readdirSync } from "fs";
 import { extname, join } from "path";
 import args from "../args";
+import logger from "../logger";
 import getDirectories from "./getDirectories";
 
 let n = 0;
@@ -12,6 +13,7 @@ let iterateOverFilesOfType = ({ callback, path, extensionList }) => {
 		let fullFilePath = join(path, filePath);
 		let fileMatchFlag = !fileMatch || new RegExp(fileMatch).test(filePath);
 		let countFlag = !debugFileCount || n < debugFileCount;
+		logger.debug(fileMatch, fileMatchFlag);
 		if (fileMatchFlag && countFlag) {
 			callback({ filePath: fullFilePath });
 			n++;

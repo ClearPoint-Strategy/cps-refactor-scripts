@@ -23,7 +23,7 @@ let args = yargs(hideBin(process.argv))
 	.option("file-match", {
 		alias: "m",
 		description: "File name matcher",
-		type: "number",
+		type: "string",
 	})
 	.option("target-path", {
 		alias: "p",
