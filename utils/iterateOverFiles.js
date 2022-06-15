@@ -10,7 +10,7 @@ let iterateOverFilesOfType = ({ callback, path, extensionList }) => {
 	let { debugFileCount, fileMatch } = args;
 	if (!loggedFlag) {
 		if (debugFileCount) logger.debug(`Logging first ${debugFileCount} files.`);
-		if (fileMatch) logger.debug(`Logging files that match text: ${debugFileCount}.`);
+		if (fileMatch) logger.debug(`Logging files that match text: ${fileMatch}.`);
 		loggedFlag = true;
 	}
 	let filePathList = readdirSync(path);
